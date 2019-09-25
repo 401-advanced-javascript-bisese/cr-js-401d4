@@ -4,12 +4,9 @@ const express = require('express');
 const logger = require('./middleware/logger');
 const colorLogger = require('./middleware/color-logger');
 const errorHandler = require('./middleware/error-handler');
-
 const app = express();
-
 // Log each request
 app.use(logger);
-
 // middleware - way to modify request/response
 app.use(express.json());
 
@@ -23,6 +20,7 @@ app.get('/500', () => {
 app.use(colorLogger('blue'));
 
 let db = [];
+
 app.get('/categories', (req, res) => {
   res.send(db);
 });
